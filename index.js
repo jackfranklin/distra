@@ -4,6 +4,7 @@ var argv = require('optimist').argv
   , fs = require('fs')
   , path = require('path')
   , spawn = require('child_process').spawn
+  , colors = require('colors')
   , home_dir = process.env.HOME
   , config_file = path.resolve(home_dir, '.distra.json')
   , port = process.argv[2] || argv.port || process.env.PORT || 8000
@@ -125,7 +126,7 @@ if( argv._[0] === 'config' || argv._[0] === 'ls' ) {
   }
 
   keys.forEach(function (host) {
-    console.log('%s : %s', pad(host, 25), config[host]);
+    console.log('%s : %s'.white, pad(host, 25), config[host]);
   });
 
   process.exit();
